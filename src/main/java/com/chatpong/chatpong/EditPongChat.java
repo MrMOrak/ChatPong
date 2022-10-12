@@ -12,7 +12,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.config.ModConfig.Type;
@@ -21,7 +20,7 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 public class EditPongChat {
 	private static final Logger LOGGER = LogManager.getLogger();
 
-	EditPongChat(CommandDispatcher<CommandSource> dispatcher) {
+	public EditPongChat(CommandDispatcher<CommandSource> dispatcher) {
 
 		dispatcher
 				.register(
@@ -68,16 +67,7 @@ public class EditPongChat {
 		float volume = FloatArgumentType.getFloat(context, "volume");
 		float pitch = FloatArgumentType.getFloat(context, "pitch");
 
-		new ModConfig(Type.COMMON, PongChatConfig.SPEC, null);
-
-		PongChatConfig.soundEffect.set(sound);
-		PongChatConfig.soundCategory.set(category);
-		PongChatConfig.volume.set(volume);
-		PongChatConfig.pitch.set(pitch);
-
-		LOGGER.debug("Successfully changed pingsound");
-
-		PongChatConfig.BUILDER.build();
+		LOGGER.debug(sound + "  " + category + " " + volume + "  " + pitch);
 
 	}
 }

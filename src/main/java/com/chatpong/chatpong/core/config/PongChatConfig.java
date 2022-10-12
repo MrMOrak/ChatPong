@@ -1,22 +1,19 @@
 package com.chatpong.chatpong.core.config;
 
-
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public final class PongChatConfig {
+public final class PongChatConfig{
 
-	public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-	public static final ForgeConfigSpec SPEC;
 
-	public static final ForgeConfigSpec.ConfigValue<String> soundEffect;
-	public static final ForgeConfigSpec.ConfigValue<Float> volume;
-	public static final ForgeConfigSpec.ConfigValue<Float> pitch;
-	public static final ForgeConfigSpec.ConfigValue<String> soundCategory;
+	public final ForgeConfigSpec.ConfigValue<String> soundEffect;
+	public final ForgeConfigSpec.ConfigValue<Float> volume;
+	public final ForgeConfigSpec.ConfigValue<Float> pitch;
+	public final ForgeConfigSpec.ConfigValue<String> soundCategory;
 
-	static {
+	public PongChatConfig(ForgeConfigSpec.Builder BUILDER)  {
 
-		BUILDER.push("Config for ChatPong mod");
-
+		BUILDER.comment("Config for choosing sound, volume and pitch").push("Chatpong");
+		
 		soundEffect = BUILDER.comment(
 				"Resource Location based name of the sound file to play when Minecraft finishes loading.\\nEG: \\\"ui.button.click\\\" or \\\"entity.experience_orb.pickup\\\"\\n\\nThis can also be a mod sound if the mod is installed.\\nEG: \\\"modname:modsound.boing\\\"\\n\\nIf you want to use external sounds, consider looking into the mod Additional Resources ")
 				.define("SoundEffect", "entity.experience_orb.pickup");
@@ -27,7 +24,6 @@ public final class PongChatConfig {
 				.define("Category", "master");
 
 		BUILDER.pop();
-		SPEC = BUILDER.build();
 
 	}
 
